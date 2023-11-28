@@ -189,10 +189,47 @@ import javax.swing.border.EmptyBorder;
 	            e.printStackTrace();
 	        }
 	    }
-	
+	    
 	    private void showGameOverPopup(String winner) {
-	        JOptionPane.showMessageDialog(this, "게임 종료! " + winner + " 승리.", "게임 종료", JOptionPane.INFORMATION_MESSAGE);
+	        Object[] options = {"나가기", "재시작"};
+
+	        int result = JOptionPane.showOptionDialog(this,
+	                "게임 종료! " + winner + " 승리.",
+	                "게임 종료",
+	                JOptionPane.YES_NO_OPTION,
+	                JOptionPane.INFORMATION_MESSAGE,
+	                null,
+	                options,
+	                options[1]);
+
+	        if (result == JOptionPane.YES_OPTION) {
+	            System.exit(0); // 프로그램 종료
+	        } else if (result == JOptionPane.NO_OPTION) {
+	            restartGame(); // 게임 재시작
+	        }
 	    }
+	    
+	    private void restartGame() {
+	        // 게임 상태를 초기값으로 재설정
+	        x_p1 = 100;
+	        y_p1 = 100;
+
+	        x_p2 = 500;
+	        y_p2 = 100;
+
+	        lives_p1 = 3;
+	        lives_p2 = 3;
+
+	        Missile_List_p1.clear();
+	        Missile_List_p2.clear();
+
+	        // 추가적인 초기화가 필요한 경우 여기에 추가
+
+	        // 게임 스레드 재시작
+	        th.interrupt();
+	        start();
+	    }
+	    
 	
 	    private boolean checkCollision() {
 	        // 삭제할 미사일 목록
