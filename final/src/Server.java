@@ -47,7 +47,7 @@ class ServerThread extends Thread {
 	boolean active;
 	
 	static int x_p1 = 100, y_p1 = 100; //비행기의 좌표
-	static int x_p2 = 500, y_p2 = 100;
+	static int x_p2 = 700, y_p2 = 100;
 	
 	int num;//p1 p2 구분
 	
