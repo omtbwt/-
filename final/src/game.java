@@ -66,7 +66,7 @@ public class game extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
             String message = textField.getText();
 
-            gameFrame.sendMessage("message:" + message);
+            gameFrame.sendMessage(message);
 
             textArea.append("나: " + message + "\n");
             textField.setText(""); // 입력 필드 지우기
@@ -87,8 +87,8 @@ public class game extends JFrame implements ActionListener {
 	    DataOutputStream os;
 	    int num; //p1 p2 구분
 	
-	    int f_width = 900;
-	    int f_height = 650;
+	    int f_width = 954;
+	    int f_height = 632;
 	
 	    int x_p1, y_p1;
 	    int x_p2, y_p2;
@@ -300,8 +300,8 @@ public class game extends JFrame implements ActionListener {
 	        Iterator<Missile> iteratorP1 = Missile_List_p1.iterator();
 	        while (iteratorP1.hasNext()) {
 	            Missile missile = iteratorP1.next();
-	            if (missile.pos.x + 50 >= x_p2 && missile.pos.x <= x_p2 + me_img_p2.getWidth(null)
-	                    && missile.pos.y + 30 >= y_p2 && missile.pos.y <= y_p2 + me_img_p2.getHeight(null)) {
+	            if (missile.pos.x + 200 >= x_p2 && missile.pos.x <= x_p2 + me_img_p2.getWidth(null)
+	                    && missile.pos.y + 40 >= y_p2 && missile.pos.y <= y_p2 + me_img_p2.getHeight(null) - 70) {
 	                iteratorP1.remove(); // 충돌한 미사일 리스트에서 즉시 제거
 	                lives_p2--; // p2의 목숨 감소
 	                if (lives_p2 == 0) {
@@ -314,7 +314,7 @@ public class game extends JFrame implements ActionListener {
 	        while (iteratorP2.hasNext()) {
 	            Missile missile = iteratorP2.next();
 	            if (missile.pos.x >= x_p1 && missile.pos.x <= x_p1 + me_img.getWidth(null)
-	                    && missile.pos.y + 30 >= y_p1 && missile.pos.y <= y_p1 + me_img.getHeight(null)) {
+	                    && missile.pos.y + 40 >= y_p1 && missile.pos.y <= y_p1 + me_img.getHeight(null) - 70) {
 	                iteratorP2.remove(); // 충돌한 미사일 리스트에서 즉시 제거
 	                lives_p1--; // p1의 목숨 감소
 	                if (lives_p1 == 0) {
@@ -592,7 +592,7 @@ public class game extends JFrame implements ActionListener {
 	                        else if (messageType.startsWith("message:")) {
 	                            // 메시지를 추출하고 textArea에 표시
 	                            String message = messageType.substring("message:".length());
-	                            displayMessage("상대방 " + message);
+	                            displayMessage("상대방: " + message);
 	                        }
 	                        else if (messageType.equals("exit")) {
 	                            // 상대방의 종료 수신하기
