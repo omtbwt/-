@@ -66,7 +66,7 @@ public class game extends JFrame implements ActionListener {
         public void actionPerformed(ActionEvent evt) {
             String message = textField.getText();
 
-            gameFrame.sendMessage("message:" + message);
+            gameFrame.sendMessage(message);
 
             textArea.append("나: " + message + "\n");
             textField.setText(""); // 입력 필드 지우기
@@ -551,7 +551,7 @@ public class game extends JFrame implements ActionListener {
 	                        else if (messageType.startsWith("message:")) {
 	                            // 메시지를 추출하고 textArea에 표시
 	                            String message = messageType.substring("message:".length());
-	                            displayMessage("상대방 " + message);
+	                            displayMessage("상대방: " + message);
 	                        }
 	                        else if (messageType.equals("exit")) {
 	                            // 상대방의 종료 수신하기
